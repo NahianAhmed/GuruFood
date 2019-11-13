@@ -1,0 +1,362 @@
+{% extends 'master.html' %}
+{% load static from staticfiles %}
+
+
+{% block content %}
+
+<!-- index page -->
+<!-- slider tag -->
+
+{% include 'slider.html' %}
+
+
+<!-- manu tag -->
+
+{% include 'manu.html' %}
+
+<!-- catering tag -->
+<section id="catering">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Catering service</h3>
+            <p style="text-align: justify;">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt iste culpa ad odit illum
+                soluta cumque dolores perferendis aut, doloremque exercitationem, expedita tenetur debitis
+                cupiditate inventore neque. Ea, blanditiis expedita?
+            </p>
+            <input type="button" value="BOOK YOUR EVENT" style="height: 40px;
+                width: 301px;
+                background-color:
+                #F01111;">
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 catering-first-img">
+                    <img src="{% static  public %}image/photo-1508424897381-4fd8755e4b7a.jpg" alt="" height="400px"
+                        width="100%">
+
+                </div>
+                <div class="col-md-6">
+                    <div class="catering-second-img">
+
+                        <img src="{% static  public %}image/pexels-photo-70497.jpg" alt="" height="160px" width="100%">
+
+                    </div>
+                    <div class="catering-third-img">
+                        <img src="{% static  public %}image/photo-1517947138120-81858a0b2ab7.jpg" alt="" height="300px"
+                            width="100%">
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- specials tag -->
+<section id="specials">
+    <div class="col-md-12 regulartext-background">
+        <p id="regulartext"> specials </p>
+
+    </div>
+
+
+
+    <div class="col-md-12">
+        <div class="row">
+
+
+
+            <div class="col-md-3 col-6 specials-single">
+
+                <img src="{% static  public %}image/stock-photo-food-image-16061896.jpg" alt="" width="100%">
+                <div class="content">
+                    <h1>Heading</h1>
+
+                </div>
+            </div>
+            <div class="col-md-3 col-6 specials-single">
+
+                <img src="{% static  public %}image/stock-photo-food-image-16061896.jpg" alt="" width="100%">
+                <div class="content">
+                    <h1>Heading</h1>
+
+                </div>
+            </div>
+            <div class="col-md-3 col-6 specials-single">
+
+                <img src="{% static  public %}image/stock-photo-food-image-16061896.jpg" alt="" width="100%">
+                <div class="content">
+                    <h1>Heading</h1>
+
+                </div>
+            </div>
+            <div class="col-md-3 col-6 specials-single">
+
+                <img src="{% static  public %}image/stock-photo-food-image-16061896.jpg" alt="" width="100%">
+                <div class="content">
+                    <h1>Heading</h1>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- foodmenu tag -->
+
+<section id="foodmenu" style="background: #f5f4ef;">
+    <div class="col-md-12 regulartext-background">
+        <p id="regulartext">REGULAR</p>
+
+    </div>
+    <div class="col-md-12 regular">
+
+        <ul class="regular-icon">
+            {% for foodcata in FoodCatagory %}
+            <li class="regular-icon-li">
+                <a onclick="foodfilter({{foodcata.id}})">
+                    <span class="trx_addons_extended_taxonomy extended_taxonomy_custom_789847129">
+                        <img src="{{ foodcata.image.url }}" alt="{{foodcata.image}}">
+                        <b>{{foodcata.title}}</b>
+                    </span>
+                </a>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+    </div>
+    <div class="col-md-12">
+        <div class="row" id="filter_div">
+            
+            
+
+
+            <!-- <div class="col-md-6 col-6 single-product-area">
+                <div class="row single-product">
+                    <div class="col-md-3">
+                        <img src="{% static  public %}image/Summer_roll.jpg" alt="" width="100%">
+                    </div>
+                    <div class="col-md-9 ">
+
+                        <div class="sc_blogger_item_header entry-header">
+                            <h6 class="header">
+                                Hello
+                            </h6>
+                            <h6 class="header">
+                                $200
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            
+            
+
+        </div>
+    </div>
+
+    <style>
+        @font-face {
+            font-family: myFirstFont;
+            src: url({% static  public %}fonts/Rustico-Regular.otf);
+        }
+
+        .single-product {
+
+            background: white;
+
+        }
+    </style>
+</section>
+
+<!-- franchize tag -->
+
+<section id="franchize">
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <img src="{% static  public %}image/BackroadPizza_A2A8326-1024x683.jpg" alt="" height="400px" width="100%">
+
+        </div>
+
+
+        <div class="col-md-6 franchize-book" style="background: #d2831e;padding: 50px;">
+            <h3>Take our Franchize</h3>
+            <p style="text-align: justify;">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt iste culpa ad odit illum
+                soluta cumque dolores perferendis aut, doloremque exercitationem, expedita tenetur debitis
+                cupiditate inventore neque. Ea, blanditiis expedita?
+            </p>
+            <input type="button" value="CONTACT NOW " style="height: 40px;
+                                        width: 301px;
+                                        background-color:
+                                        #F01111;">
+        </div>
+    </div>
+</section>
+
+<!-- location tag -->
+
+<section id="location">
+    <div class="col-md-12 regulartext-background">
+        <p id="regulartext">TRUCK LOCATOR</p>
+
+
+    </div>
+
+    <!-- <div class="sc_item_descr sc_align_center">
+                <p>
+                                Find us here at your favorite spots and check out the
+                                brand new menu with awesome burgers!
+                </p>
+        </div> -->
+
+
+    <div class="location-time">
+        <div class="row">
+            {% for data in location %}
+            <div class="col-md-4  loca-border">
+                <div class="underload-border">
+                    <div class="title">
+                        <h4> {{data.title}} </h4>
+                    </div>
+                    <div class="laocation">
+                        <div class="float-left icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </div>
+                        <div class="loc-title">
+                            {{data.location}}
+                        </div>
+                    </div>
+                    <div class="time">
+                        <div class="float-left icon-clock">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+
+                        </div>
+                        <div class="loc-time float-right">
+                            {{data.time}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+            <!-- <div class="col-md-4 loca-border">
+                            <div class="underload-border">
+                                <div class="title">
+                                    <h4>Olive Way, Seattle</h4>
+                                </div>
+                                <div class="laocation">
+                                    <div class="float-left icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="loc-title">
+                                        500 Olive Way, Seattle, WA, United States
+                                    </div>
+                                </div>
+                                <div class="time">
+                                    <div class="float-left icon-clock">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+
+                                    </div>
+                                    <div class="loc-time float-right">
+                                        11:00am-2:00pm
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 loca-border">
+                            <div class="underload-border">
+                                <div class="title">
+                                    <h4>Olive Way, Seattle</h4>
+                                </div>
+                                <div class="laocation">
+                                    <div class="float-left icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="loc-title">
+                                        500 Olive Way, Seattle, WA, United States
+                                    </div>
+                                </div>
+                                <div class="time">
+                                    <div class="float-left icon-clock">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+
+                                    </div>
+                                    <div class="loc-time float-right">
+                                        11:00am-2:00pm
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+
+
+
+
+
+        </div>
+    </div>
+
+</section>
+
+<!-- hotoffer tag -->
+
+<section id="hotoffer">
+    <div class="col-md-12">
+        <div id="hotoffer-background">
+            <p id="bg-text" class="hot">STAY CONNECT</p>
+        </div>
+        <!-- <div class="col-md-12 regulartext-background">
+                <p id="regulartext">STAY CONNECT</p>
+                  
+                                    
+        </div> -->
+
+        <div id="content">
+
+
+            <h3 class="text-center">JOIN FOR HOT OFFERS</h3>
+
+            <div class="row sub-subscribe">
+
+                <input class="input" type="text" value="" placeholder="Enter Email">
+                <input class="button" type="button" value="Subscribe">
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+
+<script>
+    function foodfilter(id) {
+         $.ajax({
+            type: 'GET',
+            url: ("food-item-by-id/" + id),
+            success: function (data) {
+               // console.log(data);
+                $('#filter_div').html(data);
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            },
+        });
+    }
+</script>
+
+<!-- end index -->
+
+{% endblock %}

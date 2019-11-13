@@ -1,0 +1,156 @@
+{% load static from staticfiles %}
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static  public %}image/Guru Food-01.png" type="image/gif" sizes="30x30">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <!-- owl carousel  -->
+        <!-- <link rel="stylesheet" href="{% static  public %}carousel/assets/css/docs.theme.min.css"> -->
+
+        <!-- Owl Stylesheets -->
+        <!-- <link rel="stylesheet" href="{% static  public %}carousel/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="{% static  public %}carousel/assets/owlcarousel/assets/owl.theme.default.min.css"> -->
+        <link rel="stylesheet" href="{% static  public %}style.css">
+       
+        <!-- <script src="{% static  public %}carousel/assets/vendors/jquery.min.js"></script>
+    <script src="{% static  public %}carousel/assets/owlcarousel/owl.carousel.js"></script> -->
+    
+        <title>Guru Food</title>
+    </head>
+
+    <body style=" position:relative;
+        overflow-x:hidden;">
+        <div class="container">
+            <section id="header">
+                <div class="social">
+                    <div class="float-left">
+                        <i class="fa fa-facebook" aria-hidden="false"></i>
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+
+
+                    </div>
+                    <div class="float-right">
+                        <i class="fa fa-cart-arrow-down" aria-hidden="false"></i>
+                        <i class="fa fa-user" aria-hidden="true"></i>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+             {% block content %}
+              <!-- child template -->
+             {% endblock %}
+
+
+
+            <section id="footer">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <div class="icon text-center">
+                            <img src="{% static  public %}image/hamburguer-1.svg" alt="">
+                        </div>
+                        <div class="title text-center">
+                            <h1>Special Offers</h1>
+                        </div><br>
+                        <div class="subtitle text-center">
+                            <p>Don’t miss out on exclusive online offers.</p>
+                        </div>
+                        <div class="link">
+                            <h3 class="text-center">SING ME UP</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-6">
+                        <div class="icon text-center">
+                            <img src="{% static  public %}image/hamburguer-1.svg" alt="">
+                        </div>
+                        <div class="title text-center">
+                            <h1>Special Offers</h1>
+                        </div><br>
+                        <div class="subtitle text-center">
+                            <p>Don’t miss out on exclusive online offers.</p>
+                        </div>
+                        <div class="link">
+                            <h3 class="text-center">SING ME UP</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-media text-center">
+                    <h3>FOLLO US</h3>
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </div>
+
+                <div class="text-center footer-logo">
+                    <img src="{% static  public %}image/Guru Food-01.png" alt="">
+                </div>
+                <div class="copyright">
+                    <div class="text-center">
+                        <p>&copy; 2019. All Rights Reserved. </p>
+                    </div>
+                </div>
+
+
+            </section>
+            <section id="footerfot">
+
+                <!-- <div class="social-media text-center">
+                        <h3>FOLLO US</h3>
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+        </div>
+   
+        <div class="text-center footer-logo">
+                        <img src="{% static  public %}image/Guru Food-01.png" alt="">
+        </div>  -->
+            </section>
+
+        </div>
+        <!-- <script>
+                $(document).ready(function() {
+                  var owl = $('.owl-carousel');
+                  owl.owlCarousel({
+                    items: 4,
+                    loop: true,
+                    margin: 10,
+                    autoplay: true,
+                    autoplayTimeout: 1000,
+                    autoplayHoverPause: true
+                  });
+                  $('.play').on('click', function() {
+                    owl.trigger('play.owl.autoplay', [1000])
+                  })
+                  $('.stop').on('click', function() {
+                    owl.trigger('stop.owl.autoplay')
+                  })
+                })
+              </script> -->
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
+        <!-- <script src="{% static  public %}carousel/assets/vendors/highlight.js"></script>
+        <script src="{% static  public %}carousel/assets/js/app.js"></script> -->
+    </body>
+
+</html>
