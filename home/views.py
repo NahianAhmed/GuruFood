@@ -2,16 +2,18 @@ from django.shortcuts import render,HttpResponse
 from .models import BusLocation
 from .models import FoodCatagory
 from .models import FoodItem
+from .models import Offers
 import json
 from django.core import serializers
 # Create your views here.
 def home(request):
     location = BusLocation.objects.all()
     FoodCatagorys = FoodCatagory.objects.filter(publish=1)
- 
+    Offer = Offers.objects.filter(publish=1)
     context={
         'location': location,
-        'FoodCatagory':FoodCatagorys
+        'FoodCatagory':FoodCatagorys,
+        'offer': Offer,
     }
     return render(request,'home/index.html',context)
 def about(request):

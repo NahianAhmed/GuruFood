@@ -326,16 +326,16 @@
 
 
             <h3 class="text-center">JOIN FOR HOT OFFERS</h3>
-
+            <form >
             <div class="row sub-subscribe">
-
-                <input class="input" type="text" value="" placeholder="Enter Email">
-                <input class="button" type="button" value="Subscribe">
-
+              
+                <input class="input" type="email" value="" id="subscribe" placeholder=" Enter Email" required>
+                <input class="button" type="submit" value="Subscribe" onclick="Subscribe()">
+           
 
             </div>
 
-
+        </form>
         </div>
     </div>
 
@@ -354,6 +354,18 @@
                 console.log(error);
             },
         });
+    }
+
+    function Subscribe(){
+
+        $("form").submit(function(e){
+        e.preventDefault();
+        val = $('#subscribe').val()
+        console.log(val)
+        $('#subscribe').val(" Thanks for subscribing us")
+        });
+        
+
     }
 </script>
 

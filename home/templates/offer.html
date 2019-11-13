@@ -1,0 +1,38 @@
+
+{% load static from staticfiles %}
+
+
+<div class="row">
+
+       {% for item in offer %}
+        <div class="col-md-6 col-6">
+            <div class="icon text-center">
+                <img src="{{item.image.url}}" alt="">
+            </div>
+            <div class="title text-center">
+                <h1>{{item.title}}</h1>
+            </div><br>
+            <div class="subtitle text-center">
+                <p>{{item.description}}</p>
+            </div>
+            <div class="link">
+               <a href="">  <h3 class="text-center">SING ME UP</h3>  </a> 
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- <div class="col-md-6 col-6">
+            <div class="icon text-center">
+                <img src="{% static  public %}image/hamburguer-1.svg" alt="">
+            </div>
+            <div class="title text-center">
+                <h1>Special Offers</h1>
+            </div><br>
+            <div class="subtitle text-center">
+                <p>Don’t miss out on exclusive online offers.</p>
+            </div>
+            <div class="link">
+                <h3 class="text-center">SING ME UP</h3>
+            </div>
+        </div> -->
+    </div>
