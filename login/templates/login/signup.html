@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        <title>Title</title>
+        <title>User - Sign up</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,33 +23,42 @@
                     {% csrf_token %}
 
                     <p class="h4 mb-4">Sign up</p>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        
+                         <div {% if message.tags %} class="alert alert-{{ message.tags}}"{% endif %} role="alert" >{{ message }} </div> 
+                        
+                        {% endfor %}
+                    </ul>
+                    {% endif %}  
 
                     <div class="form-row mb-4">
                         <div class="col">
                             <!-- First name -->
                             <input type="text" name="first_name" id="defaultRegisterFormFirstName" class="form-control"
-                                placeholder="First name">
+                                placeholder="First name" required >
                         </div>
                         <div class="col">
                             <!-- Last name -->
                             <input type="text" name="last_name" id="defaultRegisterFormLastName" class="form-control"
-                                placeholder="Last name">
+                                placeholder="Last name" >
                         </div>
                     </div>
 
                     <!-- E-mail -->
-                    <input type="email" name="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+                    <input type="email" name="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" required >
 
                     <!-- Password -->
                     <input type="password" name="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
-                        aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                        aria-describedby="defaultRegisterFormPasswordHelpBlock" required >
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                         At least 8 characters 
                     </small>
 
                     <!-- Phone number -->
-                    <input type="text" name="re-password" id="defaultRegisterPhonePassword" class="form-control" placeholder="Re Enter Password"
-                        aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                    <input type="password" name="re-password" id="defaultRegisterPhonePassword" class="form-control" placeholder="Re Enter Password"
+                        aria-describedby="defaultRegisterFormPhoneHelpBlock"  required >
                      
 
                     <!-- Newsletter -->
@@ -64,7 +73,7 @@
                     <!-- Terms of service -->
                     <p>By clicking
                         <em>Sign up</em> you agree to our
-                        <a href="/login/signup" target="_blank">terms of service</a>
+                        <a href="/account/sign-up" target="_blank">terms of service</a>
 
                 </form>
             </div>

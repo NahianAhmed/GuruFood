@@ -1,8 +1,12 @@
+
+{% load static from staticfiles %}
+
 <!doctype html>
 <html lang="en">
 
     <head>
-        <title>Title</title>
+        <title>User - login</title>
+        
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,13 +25,24 @@
                 <form class="text-center border border-light p-5" action="{% url 'login' %}" method="POST">
                      {% csrf_token %}
                     <p class="h4 mb-4">Sign in</p>
+                    
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        
+                         <div {% if message.tags %} class="alert alert-{{ message.tags}}"{% endif %} role="alert" >{{ message }} </div> 
+                        
+                        {% endfor %}
+                    </ul>
+                    {% endif %}  
+
 
                     <!-- Email -->
-                    <input type="email" name="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+                    <input type="email" name="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" required>
 
                     <!-- Password -->
                     <input type="password" name="password" id="defaultLoginFormPassword" class="form-control mb-4"
-                        placeholder="Password">
+                        placeholder="Password" required>
 
                     <div class="d-flex justify-content-around">
                         <div>
@@ -37,6 +52,7 @@
                                 <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
                             </div>
                         </div>
+                       
                         <div>
                             <!-- Forgot password -->
                             <a href="">Forgot password?</a>
