@@ -20,9 +20,12 @@
 
         <div class="container">
             <br>
-            <div class="col-md-6 offset-3">
+            <div class="col-md-6 offset-3 bg-light" >
                 <!-- Default form login -->
                 <form class="text-center border border-light p-5" action="{% url 'login' %}" method="POST">
+                        <div class="logo">
+                                <img src="{% static  public %}image/Guru Food-01.png" height="150px" width="150px" alt="">
+                            </div>
                      {% csrf_token %}
                     <p class="h4 mb-4">Sign in</p>
                     
@@ -55,7 +58,7 @@
                        
                         <div>
                             <!-- Forgot password -->
-                            <a href="">Forgot password?</a>
+                            <a href="{% url 'forget' %}">Forgot password?</a>
                         </div>
                     </div>
 

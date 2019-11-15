@@ -1,3 +1,5 @@
+{% load static from staticfiles %}
+
 <!doctype html>
 <html lang="en">
 
@@ -17,10 +19,13 @@
 
         <div class="container">
             <br>
-            <div class="col-md-6 offset-3">
+            <div class="col-md-6 offset-3 bg-light">
                 <!-- Default form register -->
                 <form class="text-center border border-light p-5" action="{% url 'signup' %}" method="POST">
                     {% csrf_token %}
+                    <div class="logo">
+                            <img src="{% static  public %}image/Guru Food-01.png" height="150px" width="150px" alt="">
+                        </div>
 
                     <p class="h4 mb-4">Sign up</p>
                     {% if messages %}

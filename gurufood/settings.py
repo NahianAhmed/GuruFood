@@ -25,9 +25,10 @@ SECRET_KEY = 'e$&*9vt&0o**n$^)3hew-4ib=&cgas85njfxne9deo%gh6vw9j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#ALLOWED_HOSTS = ['nahianofficial.pythonanywhere.com']
 ALLOWED_HOSTS = []
 
-LOGIN_URL="/account/"
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,6 +43,12 @@ INSTALLED_APPS = [
     'login',
     
 ]
+# email 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'heartsoft420@gmail.com'
+EMAIL_HOST_PASSWORD = 'S01714415122'
+EMAIL_USE_TLS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

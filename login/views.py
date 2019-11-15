@@ -1,10 +1,15 @@
+from django.conf import settings
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect
-from django.contrib.auth.models import User,auth
 from django.contrib import messages
+from .models import Token,UserModel
+from django.core.mail import send_mail
+from django.contrib.auth.hashers import make_password, check_password
+import random
 
 # Create your views here.
 def login(request):
     return render(request,"login/login.html")
+
 def signup(request):
     return render(request,"login/signup.html")
 
@@ -16,7 +21,7 @@ def signup_post(request):
     password1=request.POST['password']
     password2=request.POST['re-password']
 
-    email_val = User.objects.filter(username=email)
+    email_val = UserModel.objects.filter(email=email)
     if email_val:
         messages.success(request,"Email Already Taken")
         return HttpResponseRedirect('/account/sign-up')
@@ -30,26 +35,101 @@ def signup_post(request):
         messages.success(request,"Password Must be more then 7 character")
         return HttpResponseRedirect('/account/sign-up') 
 
-    user=User.objects.create_user(username=email,password=password1,email=email,
-    first_name=first_name,last_name=last_name,is_superuser=0,is_staff=0,is_active=1)
+    user = UserModel()
+    user.first_name=first_name
+    user.last_name=last_name
+    user.email=email
+    user.password=make_password(password1)
+    user.active = 1
+    user.token = 0
     user.save()
+    
     messages.success(request,"Your Account Created")
     return HttpResponseRedirect('/account')
 
    
 def login_post(request):
-    username=request.POST['username']
+    email=request.POST['username']
     password=request.POST['password']
-    user = auth.authenticate(username=username,password=password)
-    if user is not None:
-        auth.login(request,user)
-        if user.is_staff:
-            return HttpResponseRedirect('/admin')
-        else:
-            return HttpResponseRedirect('/user') 
+    user = UserModel.objects.filter(email=email)
+    
+    if user:
+        data = UserModel.objects.filter(email=email).get()
+        if check_password(password,data.password):
+            request.session['useremail']=email
+            request.session['username']=data.first_name
+            request.session['userid']=data.id
+            return HttpResponseRedirect('/user')
+        messages.success(request,'Wrong Account Credentials')
+        return HttpResponseRedirect('/account')   
     else:
         messages.success(request,'Wrong Account Credentials')
         return HttpResponseRedirect('/account')
    
+def forgetpassword(request):
+    return render(request,'login/forget.html')
 
+def forgetmail(request):
+    username = request.POST['username']
+    user = UserModel.objects.filter(email=username)
+    if not user:
+        messages.success(request,"Invalid Email Address")
+        return HttpResponseRedirect('/account/forget-password')
+    token = random.randrange(1000000000,9999999999,10)
+    Token.objects.filter(email=username).delete()
+    data = Token()
+    data.email = username
+    data.token = token
+    data.save()
+     
+    # email
+    sub = "Reset Password"
+    mess = "please click on the link to reset account password http://nahianofficial.pythonanywhere.com/account/link-verification/"+username+"/"+str(token)+"/"
+    server_email=settings.EMAIL_HOST_USER
+    to = username
+    send_mail(sub,mess,server_email, [to,])
+
+
+    messages.success(request,"Email Reset link sent to your email")
+    return HttpResponseRedirect('/account')
+
+def LinkVerification(request,email,token):
+    data = Token.objects.filter(token=token,email=email)
+    
+    if data:
+        request.session['useremail']=email
+        return HttpResponseRedirect("/account/update-password")
+    else:
+        return HttpResponseRedirect("/")
+
+def ResetPassword(request):
+    if request.session.has_key('useremail'):
+        return render(request,'login/updatepassword.html')
+    else:
+        return HttpResponseRedirect("/")
+
+def UpdatePassword(request):
+    
+    if request.POST['password']==request.POST['repassword']:
+        if len(request.POST['password'])<8:
+            messages.success(request,"Password Must be more then 7 character")
+            return HttpResponseRedirect('/account/update-password')
+        
+        password=make_password(request.POST['repassword'])
+        data = UserModel.objects.filter(email=request.session['useremail']).update(password=password)
+        messages.success(request,'Password Changed')
+        return HttpResponseRedirect('/account')
+    else:
+        messages.success(request,'Password Doesnot match')
+        return HttpResponseRedirect('/account/update-password')
+
+
+    
+
+
+
+
+        
+
+    
 

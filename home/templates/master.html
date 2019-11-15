@@ -7,7 +7,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="{% static  public %}image/Guru Food-01.png" type="image/gif" sizes="30x30">
+
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -20,10 +20,10 @@
         <!-- <link rel="stylesheet" href="{% static  public %}carousel/assets/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="{% static  public %}carousel/assets/owlcarousel/assets/owl.theme.default.min.css"> -->
         <link rel="stylesheet" href="{% static  public %}style.css">
-       
+
         <!-- <script src="{% static  public %}carousel/assets/vendors/jquery.min.js"></script>
     <script src="{% static  public %}carousel/assets/owlcarousel/owl.carousel.js"></script> -->
-    
+
         <title>Guru Food</title>
     </head>
 
@@ -33,16 +33,20 @@
             <section id="header">
                 <div class="social">
                     <div class="float-left">
-                        <i class="fa fa-facebook" aria-hidden="false"></i>
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-
+                        <a href="{{account.facebook}}"><i class="fa fa-facebook" aria-hidden="false"></i></a>
+                        <a href="{{account.tweeter}}"> <i class="fa fa-twitter" aria-hidden="true"></i> </a>
+                        <a href="{{account.instagram}}"> <i class="fa fa-instagram" aria-hidden="true"></i> </a>
 
                     </div>
                     <div class="float-right">
                         <i class="fa fa-cart-arrow-down" aria-hidden="false"></i>
-                        <a href="/account">  <i class="fa fa-user" aria-hidden="true"></i>   </a>
-                        
+                        {% if not request.session.useremail %}
+                        <a href="/account"> <i class="fa fa-user" aria-hidden="true"></i> </a>
+                        {% else %}
+                        <a href="/user"> <i class="fa fa-user" aria-hidden="true"></i> </a>
+
+                        {%endif%}
+
 
                     </div>
 
@@ -51,24 +55,60 @@
 
             </section>
 
-             {% block content %}
-              <!-- child template -->
-             {% endblock %}
+            {% block content %}
+            <!-- child template -->
+            {% endblock %}
+
+
+            <!-- hotoffer tag -->
+
+            <section id="hotoffer">
+                <div class="col-md-12">
+                    <div id="hotoffer-background">
+                        <p id="bg-text" class="hot">STAY CONNECT</p>
+                    </div>
+                    <!-- <div class="col-md-12 regulartext-background">
+            <p id="regulartext">STAY CONNECT</p>
+              
+             </div> -->
+
+                    <div id="content">
+
+
+                        <h3 class="text-center">JOIN FOR HOT OFFERS</h3>
+                        <form>
+                            <div class="row sub-subscribe">
+
+                                <input class="input" type="email" value="" id="subscribe" placeholder=" Enter Email"
+                                    required>
+                                <input class="button" type="submit" value="Subscribe" onclick="Subscribe()">
+
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </section>
 
 
 
             <section id="footer">
-                
+
                 {% include 'offer.html' %}
 
                 <!-- offers -->
 
 
+
+                
                 <div class="social-media text-center">
                     <h3>FOLLO US</h3>
-                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                    <a href="{{account.facebook}}"><i class="fa fa-facebook" aria-hidden="false"></i></a>
+                    <a href="{{account.tweeter}}"> <i class="fa fa-twitter" aria-hidden="true"></i> </a>
+                    <a href="{{account.instagram}}"> <i class="fa fa-instagram" aria-hidden="true"></i> </a>
+
                 </div>
 
                 <div class="text-center footer-logo">
@@ -118,6 +158,7 @@
               </script> -->
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">

@@ -3,6 +3,6 @@ from .import views
 
 urlpatterns=[
  path('',views.index),
- path('logout',views.logoutUser),
+ path('logout',views.logoutUser,name='logout'),
 
 ]

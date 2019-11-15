@@ -1,19 +1,23 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 from .models import BusLocation
 from .models import FoodCatagory
 from .models import FoodItem
-from .models import Offers
+from .models import Offers,SocialAccount,UserQuery
 import json
 from django.core import serializers
+from django.contrib import messages
+
 # Create your views here.
 def home(request):
     location = BusLocation.objects.all()
     FoodCatagorys = FoodCatagory.objects.filter(publish=1)
     Offer = Offers.objects.filter(publish=1)
+    account = SocialAccount.objects.all().first()
     context={
         'location': location,
         'FoodCatagory':FoodCatagorys,
         'offer': Offer,
+        'account':account
     }
     return render(request,'home/index.html',context)
 def about(request):
@@ -32,3 +36,14 @@ def FilterFood(request,id):
         html+=tag+image+title+price
 
     return HttpResponse(html)
+
+def Query(request):
+    data = UserQuery()
+    data.name=request.POST['name']
+    data.email=request.POST['email']
+    data.query=request.POST['query']
+    data.save()
+    messages.success(request,"Thanks for your Query")
+    return HttpResponseRedirect('/contact-with-us')
+
+

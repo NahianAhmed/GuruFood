@@ -38,3 +38,20 @@ class Offers(models.Model):
     def __str__(self):
         return self.title
 
+class SocialAccount(models.Model):
+
+    facebook = models.TextField()
+    instagram = models.TextField()
+    tweeter = models.TextField()
+    date=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "Facebook,Instragram,Tweeter"
+    
+class UserQuery(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    query = models.TextField()
+    date=models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.name

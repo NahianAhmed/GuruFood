@@ -1,22 +1,26 @@
 from django.shortcuts import render,HttpResponseRedirect,HttpResponse
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
-# @login_required  
-# def index(request):
-#     if request.user.is_authenticated:
-#         return render(request,'user/index.html')
-#     else:
-#         return HttpResponseRedirect('/account/')
+
+if __name__ == '__main__':
+    Myauth()
+
+def Myauth(request):
+    if not request.session.has_key('useremail'):
+        return HttpResponseRedirect('/')
 
 
-@login_required
+
 def index(request):
+    if not request.session.has_key('useremail'):
+        return HttpResponseRedirect('/')
     return render(request,'user/index.html')
+        
 def logoutUser(request):
-    logout(request)
-    return HttpResponse("logout")
+    request.session.flush()
+    return HttpResponseRedirect('/')
 
     
