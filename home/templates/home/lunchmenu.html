@@ -1,0 +1,341 @@
+{% load static from staticfiles %}
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static  public %}image/Guru Food-01.png" type="image/gif" sizes="16x16">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <!-- owl carousel  -->
+        <!-- <link rel="stylesheet" href="{% static  public %}carousel/assets/css/docs.theme.min.css"> -->
+
+        <!-- Owl Stylesheets -->
+        <!-- <link rel="stylesheet" href="{% static  public %}carousel/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="{% static  public %}carousel/assets/owlcarousel/assets/owl.theme.default.min.css"> -->
+        <link rel="stylesheet" href="{% static  public %}style.css">
+
+        <!-- <script src="{% static  public %}carousel/assets/vendors/jquery.min.js"></script>
+    <script src="{% static  public %}carousel/assets/owlcarousel/owl.carousel.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <title>Guru Food</title>
+
+    </head>
+
+
+
+    <body style=" position:relative;
+        overflow-x:hidden;">
+        <div class="container">
+            <section id="header">
+                <div class="social">
+                    <div class="float-left">
+                        <a href="{{account.facebook}}"><i class="fa fa-facebook" aria-hidden="false"></i></a>
+                        <a href="{{account.tweeter}}"> <i class="fa fa-twitter" aria-hidden="true"></i> </a>
+                        <a href="{{account.instagram}}"> <i class="fa fa-instagram" aria-hidden="true"></i> </a>
+
+                    </div>
+                    <div class="float-right">
+                        <i class="fa fa-cart-arrow-down" aria-hidden="false"></i>
+                        {% if not request.session.useremail %}
+                        <a href="/account"> <i class="fa fa-user" aria-hidden="true"></i> </a>
+                        {% else %}
+                        <a href="/user"> <i class="fa fa-user" aria-hidden="true"></i> </a>
+
+                        {%endif%}
+
+
+                    </div>
+
+
+                </div>
+
+            </section>
+            {% include 'manu.html' %}
+
+            <!-- custom food -->
+            <div class="container">
+
+                
+                    <br>
+                    <u>  <h2 class="text-center"> Make Your Meal </h2>  </u>
+                   <hr>
+                
+               
+
+                <div class="row">
+
+                    <div class="col-4">
+
+                        <h3> Food Menu </h3>
+                        <hr>
+
+
+                        <ul id="drag" class="list-group">
+
+                            {% for item in food %}
+                            <li class="list-group-item"><input type="text" id="food" value="{{item.id}}" hidden
+                                    style="border: none;"> <h6 class="text-primary"> {{item.title}}  </h6>   </li>
+                            
+                            {%endfor%}
+
+
+
+
+
+                     <!--
+                    <li class="list-group-item"><input type="text" id="food" value="tea" hidden
+                            style="border: none; "> tea </li>
+                    <li class="list-group-item"><input type="text" id="food" value="fish" hidden
+                            style="border: none; "> fish </li>
+                    <li class="list-group-item"><input type="text" id="food" value="milk" hidden
+                            style="border: none; ">milk </li>
+
+                            <li value="coffee" class="list-group-item " >coffee </li>
+                    <li value="tea" class="list-group-item ">tea  </li>
+                    <li value="fish" class="list-group-item ">fish  </li> -->
+
+                   </ul>
+
+                    </div>
+
+
+
+                    <div class="col-4" id="dropClass1">
+
+                        <h3> Your Meal </h3>
+                        <hr>
+
+
+
+                        <ul id="drop1" class="list-group">
+                            
+                        <li class="list-group-item"> 
+                              <p class="form-text text-muted"> Drag and Drop here </p>
+                        </li>
+
+                       </ul>
+
+
+                    </div>
+
+                    <div class="col-4" id="dropClass1">
+
+                        <h3> Order Details </h3>
+                        <hr>
+
+                        <div class="form-group">
+
+                          <label for=""> <h5> Date : </h5>  </label>
+                          <input type="date" class="form-control" name="date" id="date" aria-describedby="helpId" placeholder="Date">
+                          <small id="helpId" class="form-text text-muted"> Please Order 1 day Before </small>
+                        </div>
+
+                        <div class="form-group">
+                          <label for=""> <h5> Quantity : </h5> </label>
+                          <input type="number"
+                            class="form-control" name="quantity" id="quantity" value="1" aria-describedby="helpId" placeholder="">
+                          
+                        </div>
+
+                        <div class="form-group">
+                          <label for=""> <h5> Addess : </h5> </label>
+                          <textarea class="form-control" name="address" id="address" rows="3"></textarea>
+                        </div>
+
+
+                        
+
+
+                    </div>
+
+                    
+
+                    
+
+
+
+                </div>
+                 <hr>
+                <br>
+                <center>
+                    <button onclick="getval()" class="btn btn-primary" style="width: 70%;"> Order Your Meal </button>
+                </center>
+                
+
+
+
+            </div>
+
+            <!-- hotoffer tag -->
+
+
+
+
+
+
+
+
+
+
+            <section id="footer">
+
+                {% include 'offer.html' %}
+
+                <!-- offers -->
+
+
+
+
+                <div class="social-media text-center">
+                    <h3>FOLLO US</h3>
+                    <a href="{{account.facebook}}"><i class="fa fa-facebook" aria-hidden="false"></i></a>
+                    <a href="{{account.tweeter}}"> <i class="fa fa-twitter" aria-hidden="true"></i> </a>
+                    <a href="{{account.instagram}}"> <i class="fa fa-instagram" aria-hidden="true"></i> </a>
+
+                </div>
+
+                <div class="text-center footer-logo">
+                    <img src="{% static  public %}image/Guru Food-01.png" alt="">
+                </div>
+                <div class="copyright">
+                    <div class="text-center">
+                        <p>&copy; 2019. All Rights Reserved. </p>
+                    </div>
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"> </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
+     
+        {% if request.session.useremail %}
+
+        <script>
+        
+        var login = true;
+        </script>
+
+        {% else %}
+        <script>
+        
+        var login = false;
+        </script>
+        
+        {%endif%}
+
+
+        <script>
+            $(document).ready(function () {
+
+                $('#drag li').draggable({
+                    revert: "invalid",
+                    revertDuration: 0,
+                    helper: 'clone',
+
+
+                });
+
+                $('#dropClass1').droppable({
+
+                    drop: function (event, ui) {
+
+                        $('#drop1').append(ui.draggable.clone());
+
+                    }
+                });
+
+
+
+
+            });
+
+            
+
+            
+
+            function getval() {
+
+                if(login){
+
+                let food = $("#drop1 #food").map(function () {
+                  return $(this).val();
+                  }).get();
+                
+                let date = $("#date").val();
+                let quantity = $("#quantity").val();
+                let address = $("#address").val();
+                console.log(food);
+
+                //ajax
+
+                $.ajax({
+                type: "post",
+                url: "/food-order/",
+                data: {
+                    'food':food.toString(),
+                    'date':date,
+                    'quantity':quantity,
+                    'address':address,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                },
+                success: function (data) {
+                   //console.log(data);
+                   if(data){
+                    window.location.href = "/user/order-list"
+                   }
+                },
+                error: function (xhr, status, error) {
+                console.log(error);
+               },
+                });
+
+
+                //ajax
+
+
+
+
+
+
+
+
+
+
+
+                }
+                else{
+                    
+                    swal.fire({ title: "You are not login!",
+                        text: "Please Login To order meal",
+                        type: "success"}).then(okay => {
+                        if (okay) {
+                            window.location.href = "/account";
+                        }
+                        });
+                    
+                
+                console.log(login);
+            }}
+        </script>
+
+    </body>
+
+</html>

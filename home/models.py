@@ -55,3 +55,21 @@ class UserQuery(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name
+
+class FoodOrder(models.Model):
+
+    username = models.CharField(max_length=255)
+    useremail = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    orderDate = models.DateTimeField(auto_now_add=True)
+    deliveryDate = models.CharField(max_length=255)
+    foodItemName = models.TextField()
+    quantity =  models.CharField(max_length=255)
+    bill = models.CharField(max_length=255)
+    Payablebill = models.CharField(max_length=255)
+    paid = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.username
+
+

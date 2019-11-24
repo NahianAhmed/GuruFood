@@ -1,0 +1,60 @@
+{% extends 'dashbord_master.html' %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+        <!-- Page Heading -->
+      
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Order List </h6>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th> Order ID. </th>
+                    <th> Delivery Address </th>
+                    <th>Delivery Date</th>
+                    <th> Food Item </th>
+                    <th> Quantity </th>
+                    <th> Price </th>
+                    <th> Total Price </th>
+                    <th> Action </th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+
+                    {% for item in data %}
+
+                  <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.address}}</td>
+                    <td>{{item.deliveryDate}}</td>
+                    <td>{{item.foodItemName}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.bill}}</td>
+                    <td>{{item.Payablebill}}</td>
+                    <td>  <button class="btn btn-primary" onclick='window.location.href = "edit-order/{{item.id}}"' >Edit</button> </td>
+                    
+                    
+                  </tr>
+
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+{% endblock %}

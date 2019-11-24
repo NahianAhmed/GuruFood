@@ -15,7 +15,7 @@
             <div class="subtitle text-center">
                 <p>{{item.description}}</p>
             </div>
-            {% if not user.is_authenticated %}
+            {% if not request.session.useremail %}
             <div class="link">
                <a href="/account/sign-up">  <h3 class="text-center">SING ME UP</h3>  </a> 
             </div>

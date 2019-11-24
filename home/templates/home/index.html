@@ -63,62 +63,13 @@
 </section>
 
 <!-- specials tag -->
-<section id="specials">
-    <div class="col-md-12 regulartext-background">
-        <p id="regulartext"> specials </p>
 
-    </div>
-
-
-
-    <div class="col-md-12">
-        <div class="row">
-
-
-
-            <div class="col-md-3 col-6 specials-single">
-
-                <img src="{% static  public %}image/stock-photo-food-image-16061896.jpg" alt="" width="100%">
-                <div class="content">
-                    <h1>Heading</h1>
-
-                </div>
-            </div>
-            <div class="col-md-3 col-6 specials-single">
-
-                <img src="{% static  public %}image/stock-photo-food-image-16061896.jpg" alt="" width="100%">
-                <div class="content">
-                    <h1>Heading</h1>
-
-                </div>
-            </div>
-            <div class="col-md-3 col-6 specials-single">
-
-                <img src="{% static  public %}image/stock-photo-food-image-16061896.jpg" alt="" width="100%">
-                <div class="content">
-                    <h1>Heading</h1>
-
-                </div>
-            </div>
-            <div class="col-md-3 col-6 specials-single">
-
-                <img src="{% static  public %}image/stock-photo-food-image-16061896.jpg" alt="" width="100%">
-                <div class="content">
-                    <h1>Heading</h1>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</section>
 
 <!-- foodmenu tag -->
 
 <section id="foodmenu" style="background: #f5f4ef;">
     <div class="col-md-12 regulartext-background">
-        <p id="regulartext">REGULAR</p>
+        <p id="regulartext">Food Menu</p>
 
     </div>
     <div class="col-md-12 regular">
@@ -185,6 +136,11 @@
 <!-- franchize tag -->
 
 <section id="franchize">
+
+        <div class="col-md-12 regulartext-background">
+                <p id="regulartext">Take our Franchize </p>
+        
+            </div>
     <div class="row">
 
         <div class="col-md-6">
@@ -231,25 +187,37 @@
             {% for data in location %}
             <div class="col-md-4  loca-border">
                 <div class="underload-border">
-                    <div class="title">
-                        <h4> {{data.title}} </h4>
+                    <div class="row">
+                            <div class="title">
+                                    <h4> {{data.title}} </h4>
+                            </div>
                     </div>
-                    <div class="laocation">
-                        <div class="float-left icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
-                        </div>
-                        <div class="loc-title">
-                            {{data.location}}
-                        </div>
-                    </div>
-                    <div class="time">
-                        <div class="float-left icon-clock">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
 
-                        </div>
-                        <div class="loc-time float-right">
-                            {{data.time}}
-                        </div>
+                    <div class="row">
+                            <div class="laocation">
+                                    <div class="float-left icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="loc-title">
+                                        {{data.location}}
+                                    </div>
+                                </div>
+
                     </div>
+                    
+                    <div class="row">
+                            <div class="time">
+                                    <div class="float-left icon">
+                                        <i class="fa fa-clock-o" aria-hidden="true"> </i>
+            
+                                    </div>
+                                    <div class="loc-title float-right">
+                                        {{data.time}}
+                                    </div>
+                                </div>
+
+                    </div>
+                   
+                    
                 </div>
             </div>
 
@@ -313,7 +281,35 @@
 
 </section>
 
+<section id="franchize">
 
+    <div class="col-md-12 regulartext-background">
+            <p id="regulartext">OFFICE LUNCH </p>
+    
+        </div>
+<div class="row">
+
+    <div class="col-md-6">
+
+        <img src="{% static  public %}image/rootastes-office-lunch_2048x2048.webp" alt="" height="400px" width="100%">
+
+    </div>
+
+
+    <div class="col-md-6 franchize-book" style="background: #d2831e;padding: 50px;">
+        <h3>ORDER OFFICE LUNCH</h3>
+        <p style="text-align: justify;">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt iste culpa ad odit illum
+            soluta cumque dolores perferendis aut, doloremque exercitationem, expedita tenetur debitis
+            cupiditate inventore neque. Ea, blanditiis expedita?
+        </p>
+        <input type="button" onclick="window.location.href='/custom-lunch-menu'" value="BOOK LUNCH " style="height: 40px;
+                                    width: 301px;
+                                    background-color:
+                                    #F01111;">
+    </div>
+</div>
+</section>
 
 <script>
     function foodfilter(id) {
@@ -330,17 +326,7 @@
         });
     }
 
-    function Subscribe(){
-
-        $("form").submit(function(e){
-        e.preventDefault();
-        val = $('#subscribe').val()
-        console.log(val)
-        $('#subscribe').val(" Thanks for subscribing us")
-        });
-        
-
-    }
+    
 </script>
 
 <!-- end index -->
