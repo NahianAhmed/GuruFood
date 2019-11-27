@@ -19,7 +19,7 @@ def index(request):
         return HttpResponseRedirect('/')
     data = FoodOrder.objects.filter(useremail=request.session['useremail']);
 
-    print(data)
+    #print(data)
     items=0
     payable=0
     for item in data:
@@ -56,6 +56,6 @@ def UpdateOrder(request):
     return HttpResponseRedirect('/user/order-list')
 
 def deleteOrder(request,id):
-    print(id)
+    #print(id)
     FoodOrder.objects.filter(id=id).delete()
     return HttpResponseRedirect('/user/order-list')
